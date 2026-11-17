@@ -1,0 +1,24 @@
+## .NET
+bin/
+obj/
+*.user
+*.suo
+.vs/
+TestResults/
+*.DotSettings.user
+
+## Node / Angular
+node_modules/
+frontend/tessera-web/dist/
+frontend/tessera-web/.angular/
+
+## Editors & OS
+.idea/
+.vscode/*
+!.vscode/extensions.json
+.DS_Store
+Thumbs.db
+
+## Local secrets
+.env
+appsettings.Local.json

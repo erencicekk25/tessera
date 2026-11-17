@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Tessera design language: a broadsheet ledger.
+ * Warm paper, black ink, vermilion for debits, verdigris for credits. Rules instead of cards,
+ * serif headlines, monospaced figures. No gradients, no glass, no rounded SaaS boxes.
+ */
+
+@layer base {
+  html { -webkit-font-smoothing: antialiased; }
+
+  body {
+    @apply bg-paper text-ink font-sans;
+    /* Fine paper grain (inline SVG turbulence, ~1 KB). */
+    background-image:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.10 0 0 0 0 0.09 0 0 0 0 0.08 0 0 0 0.055 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  ::selection { @apply bg-ochre-soft text-ink; }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  input[type='number'] { -moz-appearance: textfield; }
+}
+
+@layer components {
+  .kicker {
+    @apply font-mono text-[10.5px] uppercase tracking-[0.22em] text-ink-soft;
+  }
+
+  .figures { font-variant-numeric: tabular-nums lining-nums; }
+
+  .rule-double { border-top: 3px double theme('colors.ink.DEFAULT'); }
+  .rule-thick  { border-top: 2px solid theme('colors.ink.DEFAULT'); }
+  .rule-hair   { border-top: 1px solid rgb(26 23 20 / 0.18); }
+
+  .section-mark {
+    @apply font-display italic text-ink-soft;
+    font-variation-settings: 'opsz' 14;
+  }
+
+  /* Underlined "signature line" inputs */
+  .line-input {
+    @apply w-full bg-transparent border-0 border-b border-ink/40 px-0 py-2 font-mono text-[15px]
+           placeholder:text-ink-faint focus:outline-none focus:ring-0 focus:border-ink transition-colors;
+  }
+  .line-input.ng-invalid.ng-touched { @apply border-vermilion; }
+
+  .field-label { @apply kicker block mb-1; }
+
+  .field-error { @apply mt-1 font-mono text-[11px] text-vermilion; }
+
+  /* Rubber-stamp primary action */
+  .stamp-btn {
+    @apply relative inline-flex items-center justify-center gap-3 border-2 border-ink bg-ink px-5 py-3
+           font-mono text-[12px] font-semibold uppercase tracking-[0.2em] text-paper shadow-slip-sm
+           transition-[transform,box-shadow] duration-150
+           hover:-translate-x-[1px] hover:-translate-y-[1px] hover:shadow-slip
+           active:translate-x-[2px] active:translate-y-[2px] active:shadow-none
+           disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none disabled:translate-x-0 disabled:translate-y-0;
+  }
+
+  .ghost-btn {
+    @apply inline-flex items-center gap-2 border border-ink/60 px-3 py-1.5 font-mono text-[11px] uppercase
+           tracking-[0.18em] text-ink transition-colors hover:bg-ink hover:text-paper
+           disabled:opacity-40 disabled:hover:bg-transparent disabled:hover:text-ink;
+  }
+
+  .chip {
+    @apply border border-dashed border-ink/50 px-2.5 py-1 font-mono text-[11px] text-ink-soft
+           transition-colors hover:border-solid hover:border-ink hover:bg-paper-deep hover:text-ink;
+  }
+
+  /* Perforated edge used by receipts and the sign-in card */
+  .perforated-top {
+    background-image: radial-gradient(circle at 8px -2px, transparent 6px, theme('colors.paper.DEFAULT') 6.5px);
+    background-size: 16px 10px;
+    background-repeat: repeat-x;
+  }
+
+  .hatch-vermilion {
+    background-image: repeating-linear-gradient(-45deg, theme('colors.vermilion.DEFAULT') 0 1.5px, transparent 1.5px 5px);
+  }
+
+  .hatch-ink {
+    background-image: repeating-linear-gradient(-45deg, rgb(26 23 20 / 0.55) 0 1px, transparent 1px 4px);
+  }
+}

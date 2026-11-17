@@ -1,0 +1,3 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Integration events shared between bounded contexts. Keep this assembly dependency-free. -->
+</Project>

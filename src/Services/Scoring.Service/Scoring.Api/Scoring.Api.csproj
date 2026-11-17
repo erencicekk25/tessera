@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <ItemGroup>
+    <ProjectReference Include="..\Scoring.Infrastructure\Scoring.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\..\BuildingBlocks\Tessera.AspNetCore\Tessera.AspNetCore.csproj" />
+    <ProjectReference Include="..\..\..\BuildingBlocks\Tessera.Security\Tessera.Security.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" />
+  </ItemGroup>
+</Project>
