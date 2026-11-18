@@ -411,4 +411,10 @@ Domain katmanı altyapıdan tamamen bağımsız olduğu için testler saniyenin 
 
 ---
 
+## Lisans
+
+Bu proje [MIT Lisansı](LICENSE) ile lisanslanmıştır.
+
+---
+
 <sub>Tessera bir simülasyondur; gerçek para, gerçek kredi skoru ya da finansal tavsiye içermez.</sub>
